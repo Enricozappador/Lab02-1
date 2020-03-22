@@ -4,25 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlienDictionary {
-	private List <Word> dizionario;	
+	private List <Word_Enchanted> dizionario;	
 	
 	public AlienDictionary() {
-		dizionario = new ArrayList<Word>();
+		dizionario = new ArrayList<Word_Enchanted>();
 	}
 
-	public List<Word> getDizionario() {
+	public List<Word_Enchanted> getDizionario() {
 		return dizionario;
 	}
 
-	public void setDizionario(List<Word> dizionario) {
+	public void setDizionario(List<Word_Enchanted> dizionario) {
 		this.dizionario = dizionario;
 	}
 
 
 	public void addWord(String alienWord, String translation ) {
-		Word wtemp = new Word(alienWord, translation); 
+		ArrayList<String> traduzioni = new ArrayList<String>(); 
+		traduzioni.add(translation);
+		Word_Enchanted wtemp = new Word_Enchanted(alienWord, traduzioni);
 		if(dizionario.contains(wtemp)) {
-			dizionario.get(dizionario.indexOf(wtemp)).setTranslation(translation);
+			dizionario.get(dizionario.indexOf(wtemp)).addTraduzione(translation);
 			return;
 		}
 	
@@ -34,9 +36,9 @@ public class AlienDictionary {
 	
 	public String translateWord(String alienWord) {
 		String result =null; 
-		for(Word w : dizionario) {
+		for(Word_Enchanted w : dizionario) {
 			if(w.getAlienWord().equals(alienWord)==true) {
-				result = w.getTranslation();
+				result = w.getTraduzioni().toString();
 				return result; 
 			}
 		}

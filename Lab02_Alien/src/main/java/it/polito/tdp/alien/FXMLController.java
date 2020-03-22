@@ -53,8 +53,9 @@ public class FXMLController {
     	    		return
     	    	}*/
     	    	
-    	    	if(!input.matches("[a-zA-Z]*")) {
+    	    	if(!input.matches("[a-zA-Z ]*")) {
     	    		Resulttxt.appendText("Puoi inserire soltanto lettere!!");
+    	    		return;
     	    	}
     	
     if(input.contains(" ")==true) {
